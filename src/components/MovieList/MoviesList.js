@@ -2,8 +2,10 @@ import React from "react";
 import "./MovieList.css";
 import { useGlobalContext } from "../../context";
 
+const url = "https://picsum.photos/id/237/200/300";
+
 function MoviesList() {
-  const { isLoading, movies } = useGlobalContext();
+  const { isLoading, movies, setId } = useGlobalContext();
 
   return (
     <div className="moviesList">
@@ -11,13 +13,13 @@ function MoviesList() {
       <div className="moviesList__list">
         {movies?.map((movie) => (
           <article
-            onClick={() => console.log("hello")}
+            onClick={() => setId(movie.imdbID)}
             className="moviesList__singleMovie"
             key={movie.imdbID}
           >
             <img
               className="moviesList__image"
-              src={movie.Poster}
+              src={movie.Poster === "N/A" ? url : movie.Poster}
               alt={movie.Title}
             />
             <div className="moviesList__info">

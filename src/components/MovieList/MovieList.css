@@ -1,8 +1,9 @@
 .moviesList {
-  width: 45vw;
+  width: 38vw;
   background: white;
   overflow: auto;
   color: #666;
+  height: 90vh;
 }
 
 .movieList__result {
