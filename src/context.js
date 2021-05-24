@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [isloading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("star");
+  const [id, setId] = useState("");
 
   console.log(movies);
 
@@ -31,7 +32,9 @@ const AppProvider = ({ children }) => {
   }, [query]);
 
   return (
-    <AppContext.Provider value={{ isloading, movies, query, setQuery }}>
+    <AppContext.Provider
+      value={{ isloading, movies, query, setQuery, id, setId }}
+    >
       {children}
     </AppContext.Provider>
   );
