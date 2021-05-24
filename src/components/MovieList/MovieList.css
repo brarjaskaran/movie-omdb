@@ -8,6 +8,7 @@
 .movieList__result {
   font-size: 1.2em;
   margin: 2em;
+  text-align: left;
   font-weight: 500;
 }
 
@@ -22,6 +23,10 @@
   padding: 1.5em;
 }
 
+.moviesList__singleMovie:hover {
+  background-color: rgb(233, 233, 233);
+}
+
 .moviesList__image {
   width: 100px;
   height: 100px;
@@ -30,6 +35,9 @@
 
 .moviesList__info {
   margin-left: 1em;
+  margin-top: -0.8em;
+  display: flex;
+  flex-direction: column;
 }
 
 .moviesList__title {
@@ -38,6 +46,7 @@
 
 .moviesList__year {
   font-size: 1em;
+  align-self: flex-start;
 }
 /* make div scrollable */
 

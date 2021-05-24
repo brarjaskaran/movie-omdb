@@ -1,3 +1,4 @@
+import Search from "../Search/Search";
 import "./Navbar.css";
 
 function Navbar() {
@@ -5,7 +6,7 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar__search">
         <i className="fas fa-search"></i>
-        <input type="text" placeholder="Search..." className="navbar__input" />
+        <Search />
       </div>
 
       <div className="navbar__options">
