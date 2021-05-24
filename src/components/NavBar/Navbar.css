@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #666;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.navbar__search {
+  font-size: 2em;
+
+  display: flex;
+  align-items: center;
+  margin-left: 2em;
+}
+
+.navbar__input {
+  margin-left: 1em;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1em;
+}
+
+.navbar__options {
+  display: flex;
+  margin-right: 2em;
+  justify-content: space-around;
+  width: 60%;
+}
