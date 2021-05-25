@@ -11,18 +11,14 @@ const AppProvider = ({ children }) => {
   const [id, setId] = useState("");
   const [type, setType] = useState("");
 
-  const fetchMovies = async () => {
-    setLoading(true);
+  console.log(movies);
 
+  const fetchMovies = async () => {
     try {
       const { data } = await axios.get(
         `${API_ENDPOINT}&s=${query}&type=${type}`
       );
-      console.log(data);
-
       setMovies(data.Search);
-
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }

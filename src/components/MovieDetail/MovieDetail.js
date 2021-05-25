@@ -22,8 +22,6 @@ function MovieDetail() {
     Ratings: ratings,
   } = movie;
 
-  console.log(poster);
-
   const fetchMovie = async (id) => {
     try {
       const { data } = await axios.get(`${API_ENDPOINT}&i=${id}`);
