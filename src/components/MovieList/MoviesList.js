@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../context";
 const url = "https://picsum.photos/id/237/200/300";
 
 function MoviesList() {
-  const { isLoading, movies, setId } = useGlobalContext();
+  const { movies, setId } = useGlobalContext();
 
   return (
     <div className="moviesList">

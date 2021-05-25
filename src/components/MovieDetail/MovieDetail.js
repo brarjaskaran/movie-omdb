@@ -9,7 +9,13 @@ const url = "https://picsum.photos/id/237/200/300";
 function MovieDetail() {
   const [movie, setMovie] = useState({});
   const [bookmark, setBookmark] = useState(false);
-  const { id } = useGlobalContext();
+  const {
+    id,
+    setMovieIdForMyList,
+    movieIdForMyList,
+    bookmakedMovieList,
+    setBookmarkedMovieList,
+  } = useGlobalContext();
 
   const {
     Actors: actors,
@@ -22,8 +28,6 @@ function MovieDetail() {
     Poster: poster,
     Ratings: ratings,
   } = movie;
-
-  console.log(ratings);
 
   const fetchMovie = async (id) => {
     try {
@@ -38,6 +42,31 @@ function MovieDetail() {
     fetchMovie(id);
   }, [id]);
 
+  const handleBookmarkBtn = () => {
+    setBookmark(!bookmark);
+    setMovieIdForMyList(id);
+  };
+
+  useEffect(() => {
+    fetchMovieforBookmark();
+  }, [movieIdForMyList]);
+
+  const movieList = [];
+  const fetchMovieforBookmark = async () => {
+    try {
+      const { data } = await axios.get(`${API_ENDPOINT}&i=${movieIdForMyList}`);
+      movieList.push(data);
+      setBookmarkedMovieList(movieList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  localStorage.setItem(
+    "bookmakedMovieList",
+    JSON.stringify(bookmakedMovieList)
+  );
+
   return (
     <div className="movieDetail">
       <div className="movieDetail__first">
@@ -48,10 +77,16 @@ function MovieDetail() {
         />
         <div className="movieDetail__info">
           <button
-            onClick={() => setBookmark(!bookmark)}
+            onClick={handleBookmarkBtn}
             className="movieDetail__watchlist"
           >
-            <i className={bookmark ? "fas fa-bookmark" : "far fa-bookmark"}></i>
+            <i
+              className={
+                bookmark && movieIdForMyList === id
+                  ? "fas fa-bookmark"
+                  : "far fa-bookmark"
+              }
+            ></i>
             Watchlist
           </button>
 
