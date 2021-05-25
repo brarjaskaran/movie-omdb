@@ -2,6 +2,8 @@ import Search from "../Search/Search";
 import "./Navbar.css";
 import RadioButtonsGroup from "../RadioBtn/RadioBtn";
 import RangeSlider from "../Slider/RangeSlider";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -20,6 +22,9 @@ function Navbar() {
         <div className="navbar__radioBtn">
           <RadioButtonsGroup />
         </div>
+        <button className="btn">
+          <Link to="/mylist">My List</Link>
+        </button>
       </div>
     </div>
   );

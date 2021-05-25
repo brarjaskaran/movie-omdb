@@ -10,8 +10,10 @@ const AppProvider = ({ children }) => {
   const [query, setQuery] = useState("star");
   const [id, setId] = useState("");
   const [type, setType] = useState("");
+  const [movieIdForMyList, setMovieIdForMyList] = useState("");
+  const [bookmakedMovieList, setBookmarkedMovieList] = useState([]);
 
-  console.log(movies);
+  console.log(bookmakedMovieList);
 
   const fetchMovies = async () => {
     try {
@@ -30,7 +32,20 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ isloading, movies, query, setQuery, id, setId, type, setType }}
+      value={{
+        isloading,
+        movies,
+        query,
+        setQuery,
+        id,
+        setId,
+        type,
+        setType,
+        movieIdForMyList,
+        setMovieIdForMyList,
+        bookmakedMovieList,
+        setBookmarkedMovieList,
+      }}
     >
       {children}
     </AppContext.Provider>

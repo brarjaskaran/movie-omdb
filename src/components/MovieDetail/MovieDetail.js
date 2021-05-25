@@ -9,7 +9,13 @@ const url = "https://picsum.photos/id/237/200/300";
 function MovieDetail() {
   const [movie, setMovie] = useState({});
   const [bookmark, setBookmark] = useState(false);
-  const { id } = useGlobalContext();
+  const {
+    id,
+    setMovieIdForMyList,
+    movieIdForMyList,
+    bookmakedMovieList,
+    setBookmarkedMovieList,
+  } = useGlobalContext();
 
   const {
     Actors: actors,
@@ -22,8 +28,6 @@ function MovieDetail() {
     Poster: poster,
     Ratings: ratings,
   } = movie;
-
-  console.log(ratings);
 
   const fetchMovie = async (id) => {
     try {
@@ -38,26 +42,59 @@ function MovieDetail() {
     fetchMovie(id);
   }, [id]);
 
+  const handleBookmarkBtn = () => {
+    setBookmark(!bookmark);
+    setMovieIdForMyList(id);
+  };
+
+  useEffect(() => {
+    fetchMovieforBookmark();
+  }, [movieIdForMyList]);
+
+  const movieList = [];
+  const fetchMovieforBookmark = async () => {
+    try {
+      const { data } = await axios.get(`${API_ENDPOINT}&i=${movieIdForMyList}`);
+      movieList.push(data);
+      setBookmarkedMovieList(movieList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  localStorage.setItem(
+    "bookmakedMovieList",
+    JSON.stringify(bookmakedMovieList)
+  );
+
   return (
     <div className="movieDetail">
       <div className="movieDetail__first">
         <img
           className="movieDetail__img"
-          src={poster === "N/A" ? url : poster}
+          src={poster === "N/A" ? url : poster || url}
           alt={title}
         />
         <div className="movieDetail__info">
           <button
-            onClick={() => setBookmark(!bookmark)}
+            onClick={handleBookmarkBtn}
             className="movieDetail__watchlist"
           >
-            <i className={bookmark ? "fas fa-bookmark" : "far fa-bookmark"}></i>
+            <i
+              className={
+                bookmark && movieIdForMyList === id
+                  ? "fas fa-bookmark"
+                  : "far fa-bookmark"
+              }
+            ></i>
             Watchlist
           </button>
 
-          <h2 className="movieDetail__title">{title}</h2>
+          <h2 className="movieDetail__title">
+            {title || "Please Select a movie from List"}
+          </h2>
           <div className="movieDetail__meta">
-            <span className="movieDetail__rated span">{rated}</span>
+            <span className="movieDetail__rated span">{rated || "A++"}</span>
             <span className="span">{year}</span>
             <span className="span">{genre}</span>
             <span className="span">{runtime}</span>

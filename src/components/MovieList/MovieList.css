@@ -22,6 +22,7 @@
   display: flex;
   border-bottom: 1px solid gray;
   padding: 1.5em;
+  cursor: pointer;
 }
 
 .moviesList__singleMovie:hover {

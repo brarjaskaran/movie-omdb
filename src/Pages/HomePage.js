@@ -3,13 +3,17 @@ import MoviesList from "../components/MovieList/MoviesList";
 import MovieDetail from "../components/MovieDetail/MovieDetail";
 
 import "./HomePage.css";
+import Navbar from "../components/NavBar/Navbar";
 
 function HomePage() {
   return (
-    <div className="homepage">
-      <MoviesList />
-      <MovieDetail />
-    </div>
+    <>
+      <Navbar />
+      <div className="homepage">
+        <MoviesList />
+        <MovieDetail />
+      </div>
+    </>
   );
 }
 
