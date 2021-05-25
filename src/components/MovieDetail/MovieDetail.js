@@ -43,7 +43,7 @@ function MovieDetail() {
       <div className="movieDetail__first">
         <img
           className="movieDetail__img"
-          src={poster === "N/A" ? url : poster}
+          src={poster === "N/A" ? url : poster || url}
           alt={title}
         />
         <div className="movieDetail__info">
@@ -55,9 +55,11 @@ function MovieDetail() {
             Watchlist
           </button>
 
-          <h2 className="movieDetail__title">{title}</h2>
+          <h2 className="movieDetail__title">
+            {title || "Please Select a movie from List"}
+          </h2>
           <div className="movieDetail__meta">
-            <span className="movieDetail__rated span">{rated}</span>
+            <span className="movieDetail__rated span">{rated || "A++"}</span>
             <span className="span">{year}</span>
             <span className="span">{genre}</span>
             <span className="span">{runtime}</span>
