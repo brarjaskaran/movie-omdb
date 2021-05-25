@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context";
 import { API_ENDPOINT } from "../../context";
 import "./MovieDetail.css";
+import { v4 as uuidv4 } from "uuid";
 
 const url = "https://picsum.photos/id/237/200/300";
 function MovieDetail() {
@@ -21,6 +22,8 @@ function MovieDetail() {
     Poster: poster,
     Ratings: ratings,
   } = movie;
+
+  console.log(ratings);
 
   const fetchMovie = async (id) => {
     try {
@@ -67,7 +70,15 @@ function MovieDetail() {
         <h2 className="movieDetail__plot">{plot}</h2>
       </div>
       <div className="movieDetail__third">
-        <h2>{title}</h2>
+        {ratings?.map((rating) => {
+          const { Source: source, Value: value } = rating;
+          return (
+            <div className="movieDetail__ratings" key={uuidv4()}>
+              <h3 className="movieDetail__value">{value}</h3>
+              <h3 className="movieDetail__source">{source}</h3>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

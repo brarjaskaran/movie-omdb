@@ -1,6 +1,7 @@
 import Search from "../Search/Search";
 import "./Navbar.css";
 import RadioButtonsGroup from "../RadioBtn/RadioBtn";
+import RangeSlider from "../Slider/RangeSlider";
 
 function Navbar() {
   return (
@@ -11,8 +12,12 @@ function Navbar() {
       </div>
 
       <div className="navbar__options">
-        <div>YEAR</div>
-        <div>
+        <div className="navbar__slider">
+          <h3 className="year-1970">1970</h3>
+          <RangeSlider />
+          <h3 className="year-2021">2021</h3>
+        </div>
+        <div className="navbar__radioBtn">
           <RadioButtonsGroup />
         </div>
       </div>

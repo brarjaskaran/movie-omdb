@@ -1,6 +1,6 @@
 .navbar {
   background-color: #666;
-  height: 80px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,4 +20,27 @@
   margin-right: 2em;
   justify-content: space-around;
   width: 60%;
+}
+
+.navbar__slider {
+  font-size: small;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__radioBtn {
+  margin-top: 10px;
+}
+
+.year-1970 {
+  font-weight: 400;
+  margin-right: 20px;
+  margin-top: 37px;
+}
+
+.year-2021 {
+  font-weight: 400;
+  margin-left: 20px;
+  margin-top: 37px;
 }
