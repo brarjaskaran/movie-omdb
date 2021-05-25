@@ -1,5 +1,6 @@
 import Search from "../Search/Search";
 import "./Navbar.css";
+import RadioButtonsGroup from "../RadioBtn/RadioBtn";
 
 function Navbar() {
   return (
@@ -12,14 +13,7 @@ function Navbar() {
       <div className="navbar__options">
         <div>YEAR</div>
         <div>
-          <div>TYPE</div>
-          <input type="radio" name="Any" id="any" placeholder="" /> Any
-          <input type="radio" name="Any" id="movie" placeholder="" />
-          Movies
-          <input type="radio" name="Any" id="series" placeholder="" />
-          Series
-          <input type="radio" name="Any" id="episodes" placeholder="" />
-          Episodes
+          <RadioButtonsGroup />
         </div>
       </div>
     </div>

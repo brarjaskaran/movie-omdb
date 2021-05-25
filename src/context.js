@@ -9,14 +9,15 @@ const AppProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("star");
   const [id, setId] = useState("");
-
-  console.log(movies);
+  const [type, setType] = useState("");
 
   const fetchMovies = async () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.get(`${API_ENDPOINT}&s=${query}`);
+      const { data } = await axios.get(
+        `${API_ENDPOINT}&s=${query}&type=${type}`
+      );
       console.log(data);
 
       setMovies(data.Search);
@@ -33,7 +34,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ isloading, movies, query, setQuery, id, setId }}
+      value={{ isloading, movies, query, setQuery, id, setId, type, setType }}
     >
       {children}
     </AppContext.Provider>
