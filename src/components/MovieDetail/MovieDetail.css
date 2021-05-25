@@ -75,3 +75,30 @@
   border-bottom: solid black 1px;
   padding-bottom: 1.2em;
 }
+
+/* ratings */
+.movieDetail__third {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  font-size: large;
+}
+
+.movieDetail__ratings {
+  padding-right: 6em;
+  border-right: solid gray 1px;
+}
+
+.movieDetail__ratings:last-child {
+  border-right: none;
+}
+
+.movieDetail__value {
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+.movieDetail__source {
+  font-weight: 300;
+  font-size: 1.2rem;
+}
