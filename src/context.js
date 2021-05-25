@@ -9,19 +9,16 @@ const AppProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("star");
   const [id, setId] = useState("");
+  const [type, setType] = useState("");
 
   console.log(movies);
 
   const fetchMovies = async () => {
-    setLoading(true);
-
     try {
-      const { data } = await axios.get(`${API_ENDPOINT}&s=${query}`);
-      console.log(data);
-
+      const { data } = await axios.get(
+        `${API_ENDPOINT}&s=${query}&type=${type}`
+      );
       setMovies(data.Search);
-
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +30,7 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ isloading, movies, query, setQuery, id, setId }}
+      value={{ isloading, movies, query, setQuery, id, setId, type, setType }}
     >
       {children}
     </AppContext.Provider>
