@@ -6,6 +6,12 @@
   height: 90vh;
 }
 
+.movielist__progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .movieList__result {
   font-size: 1.2em;
   margin: 2em;
@@ -64,4 +70,10 @@
 ::-webkit-scrollbar-thumb {
   background: rgb(210, 209, 209);
   /* -webkit-box-shadow: inset 10px 10px 6px rgba(72, 71, 71, 0.5); */
+}
+
+@media (max-width: 1200px) {
+  .moviesList {
+    width: 100vw;
+  }
 }

@@ -5,7 +5,7 @@ export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [isloading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("star");
   const [id, setId] = useState("");
@@ -17,10 +17,12 @@ const AppProvider = ({ children }) => {
 
   const fetchMovies = async () => {
     try {
+      setIsLoading(true);
       const { data } = await axios.get(
         `${API_ENDPOINT}&s=${query}&type=${type}`
       );
       setMovies(data.Search);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }

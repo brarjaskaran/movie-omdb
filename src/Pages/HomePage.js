@@ -10,8 +10,8 @@ function HomePage() {
     <>
       <Navbar />
       <div className="homepage">
-        <MoviesList />
-        <MovieDetail />
+        <MoviesList className="homepage__movieList" />
+        <MovieDetail className="homepage__movieDetail" />
       </div>
     </>
   );

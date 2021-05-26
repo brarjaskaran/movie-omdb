@@ -9,6 +9,7 @@ const url = "https://picsum.photos/id/237/200/300";
 function MovieDetail() {
   const [movie, setMovie] = useState({});
   const [bookmark, setBookmark] = useState(false);
+
   const {
     id,
     setMovieIdForMyList,

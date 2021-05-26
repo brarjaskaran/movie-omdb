@@ -6,3 +6,9 @@
   outline: none;
   font-size: 1em;
 }
+
+@media (max-width: 1200px) {
+  .search__input {
+    width: 80%;
+  }
+}

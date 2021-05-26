@@ -102,3 +102,9 @@
   font-weight: 300;
   font-size: 1.2rem;
 }
+
+@media (max-width: 1200px) {
+  .movieDetail {
+    display: none;
+  }
+}

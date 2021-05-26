@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../../context";
+// import { useGlobalContext } from "../../context";
+import "./MyList.css";
 const url = "https://picsum.photos/id/237/200/300";
 
 const MyList = () => {
-  const { bookmakedMovieList } = useGlobalContext();
+  // const { bookmakedMovieList } = useGlobalContext();
 
   var storage = JSON.parse(localStorage.getItem("bookmakedMovieList"));
 
   console.log(storage);
 
-  const { Title: title, Year: year, Poster: poster } = bookmakedMovieList;
+  // const { Title: title, Year: year, Poster: poster } = bookmakedMovieList;
 
   return (
     <div>
@@ -22,15 +23,15 @@ const MyList = () => {
         {storage.map((item) => {
           const { Title: title, Year: year, Poster: poster } = item;
           return (
-            <article className="moviesList__singleMovie" key={title}>
+            <article className="myList__singleMovie" key={title}>
               <img
-                className="moviesList__image"
+                className="myList__image"
                 src={poster === "N/A" ? url : poster}
                 alt={title}
               />
-              <div className="moviesList__info">
-                <h2 className="moviesList__title">{title}</h2>
-                <span className="moviesList__year">{year}</span>
+              <div className="myList__info">
+                <h2 className="myList__title">{title}</h2>
+                <span className="myList__year">{year}</span>
               </div>
             </article>
           );

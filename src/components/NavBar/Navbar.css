@@ -44,3 +44,9 @@
   margin-left: 20px;
   margin-top: 37px;
 }
+
+@media (max-width: 1200px) {
+  .navbar__options {
+    display: none;
+  }
+}

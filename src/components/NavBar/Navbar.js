@@ -10,7 +10,7 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar__search">
         <i className="fas fa-search"></i>
-        <Search />
+        <Search data-testid="search-button" />
       </div>
 
       <div className="navbar__options">
