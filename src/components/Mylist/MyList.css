@@ -1,0 +1,28 @@
+.myList__singleMovie {
+  display: flex;
+  border-bottom: 1px solid gray;
+  padding: 1.5em;
+  cursor: pointer;
+}
+
+.myList__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.myList__info {
+  margin-left: 1em;
+  margin-top: -0.8em;
+  display: flex;
+  flex-direction: column;
+}
+
+.myList__title {
+  font-weight: 300;
+}
+
+.myList__year {
+  font-size: 1em;
+  align-self: flex-start;
+}
