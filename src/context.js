@@ -13,8 +13,6 @@ const AppProvider = ({ children }) => {
   const [movieIdForMyList, setMovieIdForMyList] = useState("");
   const [bookmakedMovieList, setBookmarkedMovieList] = useState([]);
 
-  console.log(bookmakedMovieList);
-
   const fetchMovies = async () => {
     try {
       setIsLoading(true);

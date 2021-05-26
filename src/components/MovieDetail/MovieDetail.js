@@ -6,17 +6,13 @@ import "./MovieDetail.css";
 import { v4 as uuidv4 } from "uuid";
 
 const url = "https://picsum.photos/id/237/200/300";
+
+let ids = [];
 function MovieDetail() {
   const [movie, setMovie] = useState({});
   const [bookmark, setBookmark] = useState(false);
 
-  const {
-    id,
-    setMovieIdForMyList,
-    movieIdForMyList,
-    bookmakedMovieList,
-    setBookmarkedMovieList,
-  } = useGlobalContext();
+  const { id, setMovieIdForMyList } = useGlobalContext();
 
   const {
     Actors: actors,
@@ -30,6 +26,7 @@ function MovieDetail() {
     Ratings: ratings,
   } = movie;
 
+  // fetch single movie from database for the detail
   const fetchMovie = async (id) => {
     try {
       const { data } = await axios.get(`${API_ENDPOINT}&i=${id}`);
@@ -43,30 +40,15 @@ function MovieDetail() {
     fetchMovie(id);
   }, [id]);
 
+  // for watchlist
+
   const handleBookmarkBtn = () => {
     setBookmark(!bookmark);
-    setMovieIdForMyList(id);
+    ids.push(id);
+    setMovieIdForMyList(ids);
   };
 
-  useEffect(() => {
-    fetchMovieforBookmark();
-  }, [movieIdForMyList]);
-
-  const movieList = [];
-  const fetchMovieforBookmark = async () => {
-    try {
-      const { data } = await axios.get(`${API_ENDPOINT}&i=${movieIdForMyList}`);
-      movieList.push(data);
-      setBookmarkedMovieList(movieList);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  localStorage.setItem(
-    "bookmakedMovieList",
-    JSON.stringify(bookmakedMovieList)
-  );
+  console.log(ids);
 
   return (
     <div className="movieDetail">
@@ -81,13 +63,7 @@ function MovieDetail() {
             onClick={handleBookmarkBtn}
             className="movieDetail__watchlist"
           >
-            <i
-              className={
-                bookmark && movieIdForMyList === id
-                  ? "fas fa-bookmark"
-                  : "far fa-bookmark"
-              }
-            ></i>
+            <i className={bookmark ? "fas fa-bookmark" : "far fa-bookmark"}></i>
             Watchlist
           </button>
 
