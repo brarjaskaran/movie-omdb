@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import { useGlobalContext } from "../../context";
 
 const useStyles = makeStyles({
   root: {
@@ -42,9 +43,25 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
+const getRange = (array) => {
+  const lowerEnd = array[0];
+  const upperEnd = array[1];
+  let list = [];
+  for (var i = lowerEnd; i <= upperEnd; i++) {
+    list.push(i);
+  }
+  return list;
+};
+
 export default function RangeSlider() {
   const classes = useStyles();
   const [value, setValue] = React.useState([1990, 2021]);
+  const { yearsRange, setYearsRange } = useGlobalContext();
+
+  useEffect(() => {
+    const list = getRange(value);
+    setYearsRange(list);
+  }, [value]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -52,11 +69,7 @@ export default function RangeSlider() {
 
   return (
     <div className={classes.root}>
-      <Typography
-        id="range-slider"
-        // gutterBottom
-        classes={{ root: classes.fontAlign }}
-      >
+      <Typography id="range-slider" classes={{ root: classes.fontAlign }}>
         YEAR
       </Typography>
       <Slider
